@@ -1,14 +1,443 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Physijs - Destroy with friends!</title>
+
+<!-- saved from url=(0032)https://folklore1.neocities.org/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+  
+  <div class="header">
+        adding some stuff   
+    </div>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoomBlox 2018</title>
+    <link rel="icon" type="image/x-icon" href="https://folklore1.neocities.org/roblox_logo.png">
+    <link href="./FOLKLORE - WE ARE BACK_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --roblox-top-bar-bg: #2B579A; /* Lighter blue for the header */
+            --roblox-top-bar-gradient-start: #2a5382; /* Slightly lighter top of header */
+            --roblox-top-bar-gradient-end: #1e3a5e; /* Slightly darker bottom of header */
+            --roblox-sidebar-bg: #F5F5F5; /* Very light grey for the sidebar */
+            --roblox-main-bg: #EAEAEA; /* Light grey for main background */
+            --roblox-content-bg: #FFFFFF; /* White for main content blocks */
+            --roblox-link-blue: #0077B6; /* Classic Roblox link blue */
+            --roblox-link-hover-blue: #005682; /* Darker blue on link hover */
+            --roblox-button-bg: #00A3EF; /* Button blue */
+            --roblox-button-hover: #0087C7; /* Button hover blue */
+            --roblox-border-color: #D9D9D9; /* Standard border color */
+            --roblox-header-border: #1a3656; /* Darker border for header */
+            --text-color: #333;
+            --white-text: #fff;
+            --robux-yellow: #FFCC00; /* Used for Robux icon bg - NO LONGER USED FOR IMG */
+            --robux-gold-text: #E5A823; /* Text color for Robux amount */
+            --tix-icon-bg: #888888; /* Silver/grey for Tix icon background - NO LONGER USED FOR IMG */
+            --tix-amount-text: #555555; /* Darker grey for Tix amount text */
+            --game-tile-shadow: rgba(0, 0, 0, 0.05);
+            --play-button-green: #5BB12F; /* Green for play button */
+        }
+
+        body {
+            font-family: "Source Sans Pro", Arial, sans-serif;
+            margin: 0;
+            background-color: var(--roblox-main-bg);
+            color: var(--text-color);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--roblox-link-blue);
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--roblox-link-hover-blue);
+        }
+
+        /* Header (Top Bar) */
+        .header {
+            background-color: var(--roblox-top-bar-bg); /* Set to solid color */
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: var(--white-text);
+            height: 50px;
+            border-bottom: 1px solid var(--roblox-header-border);
+            position: relative; /* For z-index to be effective for dropdowns if added later */
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--white-text);
+            border-radius: 3px;
+            overflow: hidden;
+            width: 300px;
+            height: 30px;
+            border: 1px solid #999;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 5px 10px;
+            flex-grow: 1;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .search-bar button {
+            background-color: var(--roblox-button-bg);
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            color: var(--white-text);
+            font-weight: bold;
+            height: 100%;
+            border-radius: 0 3px 3px 0;
+            transition: background-color 0.2s ease;
+            font-size: 14px;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--roblox-button-hover);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Spacing between elements */
+        }
+
+        .header-right > div {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            height: 30px; /* Align with search bar */
+        }
+
+        .header-right .currency-display {
+            background-color: transparent; /* Removed background */
+            color: var(--white-text); /* Changed to white text to match header */
+            padding: 0; /* Removed padding */
+            border-radius: 0; /* Removed border-radius */
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            border: none; /* Removed border */
+            box-shadow: none; /* Removed box-shadow */
+            cursor: pointer; /* Typically clickable */
+        }
+
+        /* New class for the currency icon images */
+        .header-right .currency-icon-image {
+            width: 25px; /* Made bigger */
+            height: 25px; /* Made bigger */
+            margin-right: 8px; /* Adjusted margin */
+            object-fit: contain; /* Ensure the full image is visible without cropping */
+        }
+
+        .header-right .currency-display span:last-child {
+            color: var(--white-text); /* Changed to white text */
+        }
+
+        .header-right .tix-display span:last-child {
+            color: var(--white-text); /* Changed to white text */
+        }
+
+        /* Ensure currency amounts are not bold */
+        .currency-amount {
+            font-weight: normal;
+        }
+
+        .header-right .profile-link {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: var(--white-text);
+            padding: 3px 0;
+            transition: color 0.2s ease;
+        }
+
+        .header-right .profile-link img {
+            width: 30px;
+            height: 30px;
+            border-radius: 3px;
+            margin-right: 8px;
+            border: 1px solid var(--roblox-border-color);
+            background-color: #ccc;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .header-right .profile-link:hover {
+            text-decoration: none;
+            color: #ADD8E6; /* Lighter blue for hover on dark background */
+        }
+
+        .header-right .icon-link {
+            font-size: 20px; /* Unicode chars are larger */
+            padding: 5px;
+            color: var(--white-text);
+            transition: color 0.2s ease;
+        }
+
+        .header-right .icon-link:hover {
+            color: #ADD8E6; /* Lighter hover for icons */
+        }
+
+        /* New header navigation styles */
+        .header-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Make links horizontal */
+            gap: 15px; /* Space between links */
+            margin-left: 20px; /* Space from logo */
+        }
+
+        .header-nav li a {
+            color: var(--white-text);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.2s ease;
+            font-size: 15px;
+        }
+
+        .header-nav li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .header-nav li a.active {
+            background-color: rgba(255, 255, 255, 0.3); /* Slightly more prominent active state */
+        }
+
+        /* Main Wrapper for Sidebar and Content */
+        .page-wrapper {
+            flex: 1; /* Takes remaining space */
+            max-width: 1000px; /* Wider content area */
+            margin: 20px auto;
+            padding: 0 20px; /* Ensure padding on smaller screens */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            background-color: var(--roblox-content-bg);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            border: 1px solid var(--roblox-border-color);
+            box-sizing: border-box;
+        }
+
+        .section-header {
+            font-size: 20px;
+            font-weight: 600; /* Source Sans Pro semibold */
+            margin-bottom: 15px;
+            color: var(--roblox-top-bar-bg); /* Dark blue for headers */
+            border-bottom: 1px solid var(--roblox-border-color);
+            padding-bottom: 8px;
+        }
+
+        .game-grid {
+            display: flex; /* Use flexbox for horizontal layout */
+            flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            gap: 15px; /* Spacing between game tiles */
+            padding-bottom: 10px; /* Space for scrollbar */
+            scroll-behavior: smooth; /* Smooth scrolling with JS */
+            /* Custom scrollbar styling for Webkit browsers (Chrome, Safari, Edge) */
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: var(--roblox-link-blue) var(--roblox-main-bg); /* Firefox */
+        }
+
+        .game-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .game-grid::-webkit-scrollbar-track {
+            background: var(--roblox-main-bg);
+            border-radius: 10px;
+        }
+
+        .game-grid::-webkit-scrollbar-thumb {
+            background-color: var(--roblox-link-blue);
+            border-radius: 10px;
+            border: 2px solid var(--roblox-main-bg);
+        }
+
+        .game-tile {
+            background-color: var(--roblox-content-bg);
+            border: 1px solid var(--roblox-border-color);
+            border-radius: 3px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 1px 3px var(--game-tile-shadow);
+            min-width: 140px; /* Ensure tiles don't shrink */
+            flex-shrink: 0; /* Prevent tiles from shrinking below min-width */
+            width: 140px; /* Give a consistent width */
+        }
+
+        .game-tile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .game-tile img {
+            width: 100%;
+            height: 90px; /* Standardized height for smaller tiles */
+            object-fit: cover;
+            border-bottom: 1px solid var(--roblox-border-color);
+        }
+
+        .game-tile .play-button-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px; /* Matches image height */
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .game-tile:hover .play-button-overlay {
+            opacity: 1;
+        }
+
+        .game-tile .play-button-overlay img { /* For the play button image */
+            width: 50px;
+            height: 50px;
+            border: none;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+
+        .game-tile .game-info {
+            padding: 8px 5px;
+            background-color: #fcfcfc; /* Slight background for info */
+            border-top: 1px solid #eee;
+        }
+
+        .game-tile h3 {
+            margin: 0; /* Remove bottom margin as p is removed */
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--roblox-link-blue);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .game-tile p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #bbb;
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 30px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+            border-top: 1px solid #444;
+        }
+
+        .footer a {
+            color: #bbb;
+            margin: 0 8px;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover {
+            color: var(--white-text);
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <image src="physijs-2-22-2026.png">
-  <h1>PhysiJS - Home</h1>
-  <h2>Games:</h2>
-  <p>Pizza Tycoon</p>
-  <br>
-  <p>Natural Disaster</p>
-</body>
-</html>
+    <div class="header" style="background-color: var(--roblox-top-bar-bg);">
+        <div class="header-left">
+            <img src="R-L-12-6-2025.png" alt="Folklore Logo" class="logo">
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="https://b00blox.neocities.org/" class="active">Home</a></li>
+                    <li><a href="https://b00blox.neocities.org/Roblox%20-%20Games">Games</a></li>
+                   
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="currency-display">
+                <img src="robux treew.png" alt="Robux Icon" class="currency-icon-image"> <span id="robux-amount" class="currency-amount">15</span>
+            </div>
+            <div class="currency-display tix-display">
+                <img src="tix.png" alt="Tix Icon" class="currency-icon-image"> <span id="tix-amount" class="currency-amount">30</span>
+            </div>
+            <div>
+                <a href=" " class="profile-link">
+                    <img src="noobs.png" alt="User Avatar">
+                    Guest User
+                </a>
+            </div>
+            <div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="section-header">Welcome to BOOMBLOX!</div>
+            <p> Hello, Guest! <p>
+          <p>Explore a variety of games, connect with friends, and develop your own creations.</p>
+            <p>Use the navigation sidebar to find what you're looking for.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Ⓒ ggwp.
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "/shared.js": "/shared.js"
+            }
+        }
+    </script>
+    <script type="module" src="./FOLKLORE - WE ARE BACK_files/shared.js.download"></script>
+
+</body></html>
